@@ -82,7 +82,7 @@ object SubmitDependencyGraph {
     val snapshotUrl = s"${githubApiUrl()}/repos/${githubRepository()}/dependency-graph/snapshots"
 
     val snapshotJson = CompactPrinter(Converter.toJsonUnsafe(snapshot))
-    state.log.info(s"${snapshotJson}")
+    state.log.info(s"Manifest payload: ${snapshotJson}")
     val request = Gigahorse
       .url(snapshotUrl)
       .post(snapshotJson, StandardCharsets.UTF_8)
