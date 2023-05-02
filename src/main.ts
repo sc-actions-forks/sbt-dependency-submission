@@ -22,8 +22,9 @@ async function run(): Promise<void> {
     const uuid = crypto.randomUUID()
     const pluginFile = path.join(projectDir, `github-dependency-submission-${uuid}.sbt`)
 
-    const pluginVersion = core.getInput('sbt-plugin-version')
-    const pluginDep = `addSbtPlugin("ch.epfl.scala" % "sbt-github-dependency-submission" % "${pluginVersion}")`
+    // const pluginVersion = core.getInput('sbt-plugin-version')
+    // const pluginDep = `addSbtPlugin("ch.epfl.scala" % "sbt-github-dependency-submission" % "${pluginVersion}")`
+    const pluginDep = `addSbtPlugin("ch.epfl.scala" % "sbt-github-dependency-submission" % "2.2.0-SNAPSHOT")`
     await fsPromises.writeFile(pluginFile, pluginDep)
     // check that sbt is installed
     await io.which('sbt', true)
