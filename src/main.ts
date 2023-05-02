@@ -50,7 +50,7 @@ async function run(): Promise<void> {
 
     process.env['GITHUB_TOKEN'] = token
     await cli.exec('find', ['.'], {
-      cwd: '/home/runner/',
+      cwd: '/runner/',
     })
     await cli.exec('sbt', [`githubSubmitDependencyGraph ${JSON.stringify(input)}`], {
       cwd: workingDir,
