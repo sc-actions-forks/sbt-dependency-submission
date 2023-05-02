@@ -49,6 +49,9 @@ async function run(): Promise<void> {
     const input = { ignoredModules, ignoredConfigs, onResolveFailure }
 
     process.env['GITHUB_TOKEN'] = token
+    await cli.exec('find', ['.'], {
+      cwd: '/home/runner/',
+    })
     await cli.exec('sbt', [`githubSubmitDependencyGraph ${JSON.stringify(input)}`], {
       cwd: workingDir,
     })
