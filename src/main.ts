@@ -49,15 +49,9 @@ async function run(): Promise<void> {
     const input = { ignoredModules, ignoredConfigs, onResolveFailure }
 
     process.env['GITHUB_TOKEN'] = token
-    await cli.exec(
-      'find',
-      [
-        'runner/_work/_actions/sc-actions-forks/sbt-dependency-submission/kiesia/debugging-output/sbt-plugin',
-      ],
-      {
-        cwd: '/',
-      },
-    )
+    await cli.exec('sbt', ['publishLocal'], {
+      cwd: 'runner/_work/_actions/sc-actions-forks/sbt-dependency-submission/kiesia/debugging-output/sbt-plugin',
+    })
     await cli.exec('sbt', [`githubSubmitDependencyGraph ${JSON.stringify(input)}`], {
       cwd: workingDir,
     })

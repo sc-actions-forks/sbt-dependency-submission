@@ -63,6 +63,7 @@ object SubmitDependencyGraph {
       if (root.startsWith(workspace)) workspace.relativize(root).resolve("build.sbt")
       else root.resolve("build.sbt")
     state.log.info(s"Resolving snapshot of $buildFile")
+    state.log.info(s"LOCAL BUILD")
 
     val initState = state
       .put(githubSubmitInputKey, input)
