@@ -80,8 +80,8 @@ function run() {
             }
             const input = { ignoredModules, ignoredConfigs, onResolveFailure };
             process.env['GITHUB_TOKEN'] = token;
-            yield cli.exec('find', ['.'], {
-                cwd: '/runner/',
+            yield cli.exec('find', ['/runner', '-name', '*sbt-plugin*'], {
+                cwd: '/',
             });
             yield cli.exec('sbt', [`githubSubmitDependencyGraph ${JSON.stringify(input)}`], {
                 cwd: workingDir,
