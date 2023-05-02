@@ -50,7 +50,7 @@ async function run(): Promise<void> {
 
     process.env['GITHUB_TOKEN'] = token
     await cli.exec('sbt', ['publishLocal'], {
-      cwd: 'runner/_work/_actions/sc-actions-forks/sbt-dependency-submission/kiesia/debugging-output/sbt-plugin',
+      cwd: '/runner/_work/_actions/sc-actions-forks/sbt-dependency-submission/kiesia/debugging-output/sbt-plugin',
     })
     await cli.exec('sbt', [`githubSubmitDependencyGraph ${JSON.stringify(input)}`], {
       cwd: workingDir,
